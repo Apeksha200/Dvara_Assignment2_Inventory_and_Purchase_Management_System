@@ -2,6 +2,7 @@
 
 A comprehensive MERN stack inventory and purchase order management system with role-based access control (RBAC), order workflow management, and audit logging.
 
+Github link : https://github.com/Apeksha200/Dvara_Assignment2_Inventory_and_Purchase_Management_System.git
 
 ## 📁 Project Structure
 
