@@ -2,6 +2,35 @@
 
 A comprehensive MERN stack inventory and purchase order management system with role-based access control (RBAC), order workflow management, and audit logging.
 
+
+## 📁 Project Structure
+
+```
+inventory_purchase_management_system/
+├── backend/
+│   ├── src/
+│   │   ├── controllers/     # Request handlers
+│   │   ├── models/          # Mongoose schemas
+│   │   ├── routes/          # Express routes
+│   │   ├── middlewares/    # Auth & validation
+│   │   ├── utils/          # Helper functions
+│   │   ├── config/         # Database config
+│   │   └── app.js          # Express app setup
+│   ├── tests/              # Jest test files
+│   ├── seed.js             # Database seeder
+│   ├── server.js           # Server entry point
+│   └── package.json
+├── frontend/
+│   ├── src/
+│   │   ├── components/     # Reusable components
+│   │   ├── pages/          # Page components
+│   │   ├── context/        # React context
+│   │   ├── utils/          # Utilities
+│   │   └── App.js          # Main app component
+│   └── package.json
+└── README.md
+```
+
 ## 📋 Prerequisites
 
 Before you begin, ensure you have the following installed:
@@ -16,7 +45,7 @@ Before you begin, ensure you have the following installed:
 ### Step 1: Clone or Download the Repository
 
 ```bash
-git clone <repository-url>
+git clone "https://github.com/Apeksha200/Dvara_Assignment2_Inventory_and_Purchase_Management_System.git"( this is repo url)
 cd inventory_purchase_management_system
 ```
 
@@ -41,6 +70,9 @@ cd inventory_purchase_management_system
    ```env
    # MongoDB Connection
    MONGO_URI=mongodb+srv://<username>:<password>@cluster0.xxxxx.mongodb.net/inventory_db?retryWrites=true&w=majority
+
+   username : apes2004
+   password : 1234
    
    # Server Configuration
    PORT=5000
@@ -148,7 +180,7 @@ After seeding the database, use these credentials to login:
 - ❌ Cannot access products, suppliers, orders, or users
 - ❌ Read-only access to system
 
-## 📊 Order Workflow
+##  Order Workflow
 
 The system enforces a strict order workflow:
 
@@ -227,6 +259,49 @@ Here is the detailed schema design with constraints applied to the database mode
 | `unitPrice` | Number | Min: 0 | specific price at time of order |
 
 
+## 🔌 API Documentation
+
+### Auth
+*   `POST /api/auth/login` - Authenticate user
+*   `POST /api/auth/forgot-password` - Request password reset
+*   `POST /api/auth/reset-password` - Finish password reset
+*   `GET /api/auth/me` - Get current user details
+
+### Users (Admin Only)
+*   `GET /api/users` - List all users
+*   `POST /api/users` - Create new user
+*   `GET /api/users/:id` - Get specific user
+*   `PUT /api/users/:id` - Update user details
+*   `PUT /api/users/:id/reset-password` - Admin force reset password
+
+### Products
+*   `GET /api/products` - List products
+*   `GET /api/products/:id` - Get product details
+*   `POST /api/products` - Create product (Admin)
+*   `PUT /api/products/:id` - Update product (Admin)
+*   `DELETE /api/products/:id` - Delete product (Admin)
+
+### Suppliers
+*   `GET /api/suppliers` - List suppliers
+*   `GET /api/suppliers/:id` - Get supplier details
+*   `POST /api/suppliers` - Create supplier (Admin)
+*   `PUT /api/suppliers/:id` - Update supplier (Admin)
+
+### Orders
+*   `GET /api/orders` - List all orders
+*   `GET /api/orders/:id` - Get order details
+*   `POST /api/orders` - Create draft order (Procurement)
+*   `PUT /api/orders/:id` - Update draft order (Procurement)
+*   `DELETE /api/orders/:id` - Delete draft order (Procurement)
+*   `PUT /api/orders/:id/submit` - Submit for approval (Procurement)
+*   `PUT /api/orders/:id/approve` - Approve order (Admin)
+*   `PUT /api/orders/:id/deliver` - Finalize delivery (Procurement)
+
+### Reports
+*   `GET /api/reports/orders` - Get order statistics
+*   `GET /api/reports/audit` - Get system audit logs
+
+
 ## 🧑‍💼 Procurement Dashboard – Screenshots & Explanation
 
 ### 1. Procurement User Login
@@ -276,7 +351,7 @@ Here is the detailed schema design with constraints applied to the database mode
 
 *   **Transition**: Order status transitions from **DRAFT** → **SUBMITTED**.
 *   **Constraints**: Once submitted, the procurement user cannot edit the order. The order is sent to the Admin for approval. No further actions are available to the procurement user until approval.
-*   
+  
 <img width="1917" height="854" alt="image" src="https://github.com/user-attachments/assets/217390f8-ca20-43b9-abf1-ef175bb95c0f" />
 
 ### 7. Approval & Delivery (Inventory Update)
@@ -375,7 +450,7 @@ Here is the detailed schema design with constraints applied to the database mode
     *   Order status changes (Submit, Approve, Deliver).
     *   Inventory updates.
 *   **Filters**: Filter logs by Date, Action Type, User, or Entity to quickly find relevant records.
-*   
+  
 <img width="1912" height="811" alt="image" src="https://github.com/user-attachments/assets/3624a003-f123-431a-8395-7bd648c2d22f" />
 
 ## 🛡️ Auditor Dashboard - Screenshots & Explanation
@@ -415,9 +490,52 @@ Here is the detailed schema design with constraints applied to the database mode
     *   
 <img width="1895" height="857" alt="image" src="https://github.com/user-attachments/assets/30cb2b78-561a-40ad-99bd-ccdfe936100c" />
 
+## 🧪 Testing
 
+The project includes Jest test suites for order workflow and RBAC:
 
+```bash
+# Run all tests
+cd backend
+npm test
 
+# Run tests in watch mode
+npm run test:watch
+
+# Run tests with coverage
+npm run test:coverage
+```
+## 🔒 Security Features
+
+- JWT-based authentication
+- Password hashing with bcrypt
+- Role-based access control (RBAC)
+- Protected API routes
+- Input validation
+- CORS configuration
+- Helmet.js security headers
+
+## 🐛 Troubleshooting
+
+### Backend won't start
+- Check that MongoDB Atlas connection string is correct
+- Ensure `.env` file exists and has correct values
+- Verify port 5000 is not in use
+
+### Frontend won't connect to backend
+- Ensure backend is running on port 5000
+- Check CORS configuration in `backend/src/app.js`
+- Verify `FRONTEND_URL` in backend `.env` matches frontend port
+
+### Password reset not working
+- Check email configuration in `.env`
+- If email not configured, check backend console for reset URL
+- Verify `FRONTEND_URL` is set correctly
+
+### Tests failing
+- Ensure MongoDB test database is accessible
+- Check that `.env` has `JWT_SECRET` set
+- Verify test database connection string
 
 
 
