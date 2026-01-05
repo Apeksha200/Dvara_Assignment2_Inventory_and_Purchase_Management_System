@@ -21,7 +21,9 @@ import {
   Switch,
   FormControlLabel,
 } from "@mui/material";
-import { Add, Edit, LockReset } from "@mui/icons-material";
+import AddIcon from "@mui/icons-material/Add";
+import EditIcon from "@mui/icons-material/Edit";
+import LockResetIcon from "@mui/icons-material/LockReset";
 import axios from "../utils/axios";
 import { useAuth } from "../context/AuthContext";
 
@@ -157,7 +159,7 @@ const Users = () => {
         <Typography variant="h4">User Management</Typography>
         <Button
           variant="contained"
-          startIcon={<Add />}
+          startIcon={<AddIcon />}
           onClick={() => setOpen(true)}
         >
           Add User
@@ -203,7 +205,7 @@ const Users = () => {
                 </TableCell>
                 <TableCell>
                   <Button
-                    startIcon={<Edit />}
+                    startIcon={<EditIcon />}
                     onClick={() => handleEdit(user)}
                     size="small"
                     sx={{ mr: 1 }}
@@ -219,7 +221,7 @@ const Users = () => {
                     color="primary"
                     title="Send password reset email"
                   >
-                    <LockReset />
+                    <LockResetIcon />
                   </IconButton>
                 </TableCell>
               </TableRow>

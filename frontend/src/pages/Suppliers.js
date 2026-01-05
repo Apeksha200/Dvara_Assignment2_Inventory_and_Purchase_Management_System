@@ -20,7 +20,8 @@ import {
   Switch,
   FormControlLabel,
 } from "@mui/material";
-import { Add, Edit } from "@mui/icons-material";
+import AddIcon from "@mui/icons-material/Add";
+import EditIcon from "@mui/icons-material/Edit";
 import axios from "../utils/axios";
 import { useAuth } from "../context/AuthContext";
 
@@ -98,7 +99,7 @@ const Suppliers = () => {
         {user.role === "ADMIN" && (
           <Button
             variant="contained"
-            startIcon={<Add />}
+            startIcon={<AddIcon />}
             onClick={() => setOpen(true)}
           >
             Add Supplier
@@ -169,7 +170,7 @@ const Suppliers = () => {
                 {user.role === "ADMIN" && (
                   <TableCell>
                     <Button
-                      startIcon={<Edit />}
+                      startIcon={<EditIcon />}
                       onClick={() => handleEdit(supplier)}
                     >
                       Edit

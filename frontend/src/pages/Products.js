@@ -26,7 +26,9 @@ import {
   Switch,
   FormControlLabel,
 } from "@mui/material";
-import { Add, Search, Warning } from "@mui/icons-material";
+import AddIcon from "@mui/icons-material/Add";
+import SearchIcon from "@mui/icons-material/Search";
+import WarningIcon from "@mui/icons-material/Warning";
 import axios from "../utils/axios";
 import { useAuth } from "../context/AuthContext";
 
@@ -190,7 +192,7 @@ const Products = () => {
         {user.role === "ADMIN" && (
           <Button
             variant="contained"
-            startIcon={<Add />}
+            startIcon={<AddIcon />}
             onClick={() => setOpen(true)}
           >
             Add Product
@@ -222,7 +224,7 @@ const Products = () => {
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <Search sx={{ color: "primary.main" }} />
+                    <SearchIcon sx={{ color: "primary.main" }} />
                   </InputAdornment>
                 ),
               }}
@@ -350,7 +352,7 @@ const Products = () => {
                   <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
                     {product.name}
                     {product.quantity <= product.reorderThreshold && (
-                      <Warning
+                      <WarningIcon
                         color="warning"
                         fontSize="small"
                         titleAccess="Low Stock"

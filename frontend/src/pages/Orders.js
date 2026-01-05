@@ -26,7 +26,9 @@ import {
   Step,
   StepLabel,
 } from "@mui/material";
-import { Add, ExpandMore, ExpandLess } from "@mui/icons-material";
+import AddIcon from "@mui/icons-material/Add";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import axios from "../utils/axios";
 import { useAuth } from "../context/AuthContext";
 
@@ -221,7 +223,7 @@ const Orders = () => {
         {user.role === "PROCUREMENT" && (
           <Button
             variant="contained"
-            startIcon={<Add />}
+            startIcon={<AddIcon />}
             onClick={() => {
               setForm({
                 supplier: "",
@@ -257,7 +259,7 @@ const Orders = () => {
                       size="small"
                       onClick={() => handleExpand(order._id)}
                     >
-                      {expanded[order._id] ? <ExpandLess /> : <ExpandMore />}
+                      {expanded[order._id] ? <ExpandLessIcon /> : <ExpandMoreIcon />}
                     </IconButton>
                     {order.orderNumber}
                   </TableCell>

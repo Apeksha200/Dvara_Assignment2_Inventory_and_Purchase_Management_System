@@ -10,14 +10,12 @@ import {
   ListItemText,
   Box,
 } from "@mui/material";
-import {
-  Dashboard,
-  Inventory,
-  Business,
-  ShoppingCart,
-  Assessment,
-  People,
-} from "@mui/icons-material";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import InventoryIcon from "@mui/icons-material/Inventory";
+import BusinessIcon from "@mui/icons-material/Business";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import AssessmentIcon from "@mui/icons-material/Assessment";
+import PeopleIcon from "@mui/icons-material/People";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
@@ -29,25 +27,25 @@ const Layout = ({ children }) => {
   const location = useLocation();
 
   const menuItems = [
-    { text: "Dashboard", icon: <Dashboard />, path: "/dashboard" },
+    { text: "Dashboard", icon: <DashboardIcon />, path: "/dashboard" },
   ];
 
   // AUDITOR can ONLY see Reports
   if (user.role === "AUDITOR") {
-    menuItems.push({ text: "Reports", icon: <Assessment />, path: "/reports" });
+    menuItems.push({ text: "Reports", icon: <AssessmentIcon />, path: "/reports" });
   } else {
     // ADMIN and PROCUREMENT can see Products, Suppliers, Orders
     if (user.role === "ADMIN" || user.role === "PROCUREMENT") {
       menuItems.push(
-        { text: "Products", icon: <Inventory />, path: "/products" },
-        { text: "Suppliers", icon: <Business />, path: "/suppliers" },
-        { text: "Orders", icon: <ShoppingCart />, path: "/orders" }
+        { text: "Products", icon: <InventoryIcon />, path: "/products" },
+        { text: "Suppliers", icon: <BusinessIcon />, path: "/suppliers" },
+        { text: "Orders", icon: <ShoppingCartIcon />, path: "/orders" }
       );
     }
 
     if (user.role === "ADMIN") {
-      menuItems.push({ text: "Users", icon: <People />, path: "/users" });
-      menuItems.push({ text: "Reports", icon: <Assessment />, path: "/reports" });
+      menuItems.push({ text: "Users", icon: <PeopleIcon />, path: "/users" });
+      menuItems.push({ text: "Reports", icon: <AssessmentIcon />, path: "/reports" });
     }
   }
 

@@ -10,7 +10,10 @@ import {
   InputAdornment,
   IconButton
 } from "@mui/material";
-import { Lock, Visibility, VisibilityOff, ArrowBack } from "@mui/icons-material";
+import LockIcon from "@mui/icons-material/Lock";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useAuth } from "../context/AuthContext";
 import { useParams, useNavigate } from "react-router-dom";
 
@@ -233,7 +236,7 @@ const ResetPassword = () => {
                 InputProps={{
                     startAdornment: (
                         <InputAdornment position="start">
-                          <Lock color="action" />
+                          <LockIcon color="action" />
                         </InputAdornment>
                       ),
                       endAdornment: (
@@ -243,7 +246,7 @@ const ResetPassword = () => {
                             onClick={() => setShowPassword(!showPassword)}
                             edge="end"
                           >
-                            {showPassword ? <VisibilityOff /> : <Visibility />}
+                            {showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
                           </IconButton>
                         </InputAdornment>
                       ),
@@ -261,7 +264,7 @@ const ResetPassword = () => {
                 InputProps={{
                     startAdornment: (
                         <InputAdornment position="start">
-                          <Lock color="action" />
+                          <LockIcon color="action" />
                         </InputAdornment>
                       ),
                   sx: { borderRadius: 2 }

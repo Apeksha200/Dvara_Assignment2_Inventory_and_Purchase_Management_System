@@ -24,7 +24,9 @@ import {
   Tabs,
   Tab,
 } from "@mui/material";
-import { Add, LocalShipping, Warning } from "@mui/icons-material";
+import AddIcon from "@mui/icons-material/Add";
+import LocalShippingIcon from "@mui/icons-material/LocalShipping";
+import WarningIcon from "@mui/icons-material/Warning";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import axios from "../utils/axios";
@@ -560,7 +562,7 @@ const ProcurementDashboard = () => {
                           {product.quantity}
                         </Typography>
                         {product.quantity <= product.reorderThreshold && (
-                          <Warning sx={{ color: "error.main", fontSize: 16 }} />
+                          <WarningIcon sx={{ color: "error.main", fontSize: 16 }} />
                         )}
                       </Box>
                     </TableCell>
@@ -677,7 +679,7 @@ const ProcurementDashboard = () => {
                           size="small"
                           variant="contained"
                           color="success"
-                          startIcon={<LocalShipping />}
+                          startIcon={<LocalShippingIcon />}
                           onClick={() =>
                             handleStatusChange(order._id, "DELIVERED")
                           }

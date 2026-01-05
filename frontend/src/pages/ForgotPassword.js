@@ -10,7 +10,8 @@ import {
   InputAdornment, 
   IconButton
 } from "@mui/material";
-import { Email, ArrowBack } from "@mui/icons-material";
+import EmailIcon from "@mui/icons-material/Email";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
@@ -189,7 +190,7 @@ const ForgotPassword = () => {
               InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
-                      <Email color="action" />
+                      <EmailIcon color="action" />
                     </InputAdornment>
                   ),
                 sx: { borderRadius: 2 }
@@ -223,7 +224,7 @@ const ForgotPassword = () => {
             
             <Button
               onClick={() => navigate("/login")}
-              startIcon={<ArrowBack />}
+              startIcon={<ArrowBackIcon />}
               fullWidth
               sx={{
                 textTransform: "none",
