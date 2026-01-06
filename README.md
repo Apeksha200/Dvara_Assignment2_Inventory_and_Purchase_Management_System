@@ -98,6 +98,33 @@ cd inventory_purchase_management_system
    - Replace `cluster0.xxxxx.mongodb.net` with your actual MongoDB Atlas cluster URL
    - For Gmail, you'll need to generate an [App Password](https://support.google.com/accounts/answer/185833) 
    - Change `JWT_SECRET` to a strong random string in production
+  
+### 🛠️ Steps to Generate Gmail App Password
+
+- **Go to the Google App Passwords page**:  
+   👉 [https://support.google.com/accounts/answer/185833](https://support.google.com/accounts/answer/185833)
+
+- **Click on "Create and manage App Passwords"**  
+   *(You may be asked to sign in again)*
+
+- **Under "Select app", enter**:  
+   `Gmail`
+
+- **Click Create**
+
+- **Google will generate a 16-character App Password**
+
+- **Copy the generated password** *(you won’t see it again)*
+
+### 🔧 Configure Environment Variables
+
+Add the copied App Password to your `.env` file:
+
+```env
+EMAIL_USER=your-email@gmail.com
+EMAIL_PASS=your_generated_app_password
+```
+**⚠️ IMPORTANT**: Do NOT use your normal Gmail password.
 
 ### Step 3: Frontend Setup
 
