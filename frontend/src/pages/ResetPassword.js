@@ -93,8 +93,9 @@ const ResetPassword = () => {
       <Grid
         item
         xs={false}
-        sm={6}
-        md={6}
+        sm={7}
+        md={7}
+        lg={7}
         sx={{
           background: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)", // Matches Pending Orders card
           backgroundSize: "cover",
@@ -171,14 +172,15 @@ const ResetPassword = () => {
       <Grid
         item
         xs={12}
-        sm={6}
-        md={6}
+        sm={5}
+        md={5}
+        lg={5}
         sx={{
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          bgcolor: "#f8f9fa"
+          bgcolor: "#ffffff"
         }}
       >
         <Paper
