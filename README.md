@@ -78,8 +78,8 @@ cd inventory_purchase_management_system
    NODE_ENV=development
    
    # JWT Configuration
-  JWT_SECRET=inventory_super_secret_very_long_and_secure_key_here
-  JWT_EXPIRES_IN=1d
+   JWT_SECRET=inventory_super_secret_very_long_and_secure_key_here
+   JWT_EXPIRES_IN=1d
 
    
    # Frontend URL (for password reset links)
