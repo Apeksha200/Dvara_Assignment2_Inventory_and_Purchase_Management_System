@@ -42,13 +42,13 @@ const Login = () => {
   const handleClickShowPassword = () => setShowPassword(!showPassword);
 
   return (
-    <Grid container component="main" sx={{ height: "100vh" }}>
+    <Grid container component="main" sx={{ height: "100vh", width: "100vw", m: 0 }}>
       {/* Left Side - Hero/Gradient (Swapped from Right) */}
       <Grid
         item
         xs={false}
-        sm={4}
-        md={7}
+        sm={6}
+        md={6}
         sx={{
           background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)", // Matches Dashboard Admin Card gradient
           backgroundSize: "cover",
@@ -126,8 +126,8 @@ const Login = () => {
       <Grid
         item
         xs={12}
-        sm={8}
-        md={5}
+        sm={6}
+        md={6}
         sx={{
           display: "flex",
           flexDirection: "column",
@@ -145,7 +145,7 @@ const Login = () => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            bgcolor: "transpatent", 
+            bgcolor: "transparent", 
             borderRadius: 3,
           }}
         >

@@ -47,13 +47,7 @@ const Dashboard = () => {
 
 // Admin Dashboard
 const AdminDashboard = () => {
-  const { logout } = useAuth();
-  const navigate = useNavigate();
-  
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
-  };
+  /* handleLogout removed */
   const [stats, setStats] = useState({
     totalProducts: 0,
     totalSuppliers: 0,
@@ -220,9 +214,6 @@ const AdminDashboard = () => {
         mb={3}
       >
         <Typography variant="h4">Admin Dashboard</Typography>
-        <Button variant="outlined" onClick={handleLogout}>
-          Logout
-        </Button>
       </Box>
 
       <Grid container spacing={4} sx={{ mb: 4 }}>
@@ -361,13 +352,7 @@ const AdminDashboard = () => {
 
 // Procurement Dashboard
 const ProcurementDashboard = () => {
-  const { logout } = useAuth();
-  const navigate = useNavigate();
-  
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
-  };
+  /* handleLogout removed */
   const [products, setProducts] = useState([]);
   const [orders, setOrders] = useState([]);
 
@@ -453,9 +438,6 @@ const ProcurementDashboard = () => {
         mb={3}
       >
         <Typography variant="h4">Procurement Dashboard</Typography>
-        <Button variant="outlined" onClick={handleLogout}>
-          Logout
-        </Button>
       </Box>
 
       <Box sx={{ mb: 4 }}>
@@ -708,13 +690,7 @@ const ProcurementDashboard = () => {
 
 // Auditor Dashboard
 const AuditorDashboard = () => {
-  const { logout } = useAuth();
-  const navigate = useNavigate();
-  
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
-  };
+  /* handleLogout removed */
   
   const [auditLogs, setAuditLogs] = useState([]);
 
@@ -758,9 +734,6 @@ const AuditorDashboard = () => {
         mb={3}
       >
         <Typography variant="h4">Auditor Dashboard</Typography>
-        <Button variant="outlined" onClick={handleLogout}>
-          Logout
-        </Button>
       </Box>
 
       {/* Stats Cards */}

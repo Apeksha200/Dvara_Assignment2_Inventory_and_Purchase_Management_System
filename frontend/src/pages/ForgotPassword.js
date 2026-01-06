@@ -46,13 +46,13 @@ const ForgotPassword = () => {
   };
 
   return (
-    <Grid container component="main" sx={{ height: "100vh" }}>
+    <Grid container component="main" sx={{ height: "100vh", width: "100vw", m: 0 }}>
       {/* Left Side - Hero/Gradient (Swapped) */}
       <Grid
         item
         xs={false}
-        sm={4}
-        md={7}
+        sm={6}
+        md={6}
         sx={{
           background: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)", // Matches another dashboard card gradient
           backgroundSize: "cover",
@@ -129,8 +129,8 @@ const ForgotPassword = () => {
       <Grid
         item
         xs={12}
-        sm={8}
-        md={5}
+        sm={6}
+        md={6}
         sx={{
           display: "flex",
           flexDirection: "column",
@@ -148,7 +148,7 @@ const ForgotPassword = () => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            bgcolor: "transpatent",
+            bgcolor: "transparent",
             borderRadius: 3,
           }}
         >

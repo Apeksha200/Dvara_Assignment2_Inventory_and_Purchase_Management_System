@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   AppBar,
   Toolbar,
@@ -9,6 +9,11 @@ import {
   ListItemIcon,
   ListItemText,
   Box,
+  IconButton,
+  Menu,
+  MenuItem,
+  Avatar,
+  Tooltip,
 } from "@mui/material";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import InventoryIcon from "@mui/icons-material/Inventory";
@@ -22,18 +27,33 @@ import { useAuth } from "../context/AuthContext";
 const drawerWidth = 240;
 
 const Layout = ({ children }) => {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleLogout = () => {
+    handleClose();
+    logout();
+    navigate("/login");
+  };
 
   const menuItems = [
     { text: "Dashboard", icon: <DashboardIcon />, path: "/dashboard" },
   ];
 
   // AUDITOR can ONLY see Reports
-  if (user.role === "AUDITOR") {
+  if (user?.role === "AUDITOR") {
     menuItems.push({ text: "Reports", icon: <AssessmentIcon />, path: "/reports" });
-  } else {
+  } else if (user) {
     // ADMIN and PROCUREMENT can see Products, Suppliers, Orders
     if (user.role === "ADMIN" || user.role === "PROCUREMENT") {
       menuItems.push(
@@ -56,9 +76,47 @@ const Layout = ({ children }) => {
         sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
       >
         <Toolbar>
-          <Typography variant="h6" noWrap component="div">
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Inventory Management
           </Typography>
+          {user && (
+            <div>
+              <Tooltip title={user.name || "User"}>
+                <IconButton
+                  size="large"
+                  aria-label="account of current user"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  onClick={handleMenu}
+                  color="inherit"
+                >
+                  <Avatar sx={{ width: 32, height: 32, bgcolor: 'secondary.main' }}>
+                     {user.name ? user.name.charAt(0).toUpperCase() : "U"}
+                  </Avatar>
+                  <Typography variant="subtitle1" sx={{ ml: 1, display: { xs: 'none', sm: 'block' } }}>
+                    {user.name}
+                  </Typography>
+                </IconButton>
+              </Tooltip>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                <MenuItem onClick={handleLogout}>Logout</MenuItem>
+              </Menu>
+            </div>
+          )}
         </Toolbar>
       </AppBar>
 
