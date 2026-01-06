@@ -72,16 +72,15 @@ cd inventory_purchase_management_system
    # MongoDB Connection
    MONGO_URI=mongodb+srv://<username>:<password>@cluster0.xxxxx.mongodb.net/inventory_db?retryWrites=true&w=majority
 
-   username : apes2004
-   password : 1234
-   
+  
    # Server Configuration
    PORT=5000
    NODE_ENV=development
    
    # JWT Configuration
-   JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
-   JWT_EXPIRES_IN=7d
+  JWT_SECRET=inventory_super_secret_very_long_and_secure_key_here
+  JWT_EXPIRES_IN=1d
+
    
    # Frontend URL (for password reset links)
    FRONTEND_URL=http://localhost:3000
@@ -97,7 +96,7 @@ cd inventory_purchase_management_system
    **Important Notes:**
    - Replace `<username>` and `<password>` with your MongoDB Atlas credentials
    - Replace `cluster0.xxxxx.mongodb.net` with your actual MongoDB Atlas cluster URL
-   - For Gmail, you'll need to generate an [App Password](https://support.google.com/accounts/answer/185833)
+   - For Gmail, you'll need to generate an [App Password](https://support.google.com/accounts/answer/185833) 
    - Change `JWT_SECRET` to a strong random string in production
 
 ### Step 3: Frontend Setup
